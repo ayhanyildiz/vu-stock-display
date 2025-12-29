@@ -1,4 +1,5 @@
 # VuDials Stock Monitor (v1)
+<img src="assets\vu1-stock-screens.png" width="400"/>
 
 Node (ESM) + Angular app that:
 
@@ -13,6 +14,9 @@ Node (ESM) + Angular app that:
 ## Prerequisites 
 The API keys are configured via the **UI settings page**:  
 `http://localhost:3000/settings`
+
+<img src="assets\vu1-stock-screens-setting-tab-1.png" width="300"/>
+<img src="assets\vu1-stock-screens-setting-tab-2.png" width="300"/>
 
 ### 1) VuDials server
 
