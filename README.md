@@ -153,3 +153,7 @@ Per-dial runtime state tracks:
 ### v2
 - Make VuDials hardware optional (UI-only mode).
 - Richer refresh / control UI.
+
+## License
+
+This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
