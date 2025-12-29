@@ -1,0 +1,16 @@
+<router-outlet></router-outlet>
+@if(backendDown()) {
+  <div class="backend-down-overlay">
+    <mat-card class="backend-down-card">
+      <mat-card-title>No backend server is running</mat-card-title>
+      <mat-card-content>
+        <p>Start the Node server, then refresh this page.</p>
+        <p class="hint">If it is running, check proxy/CORS.</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="retry()">Retry</button>
+        <button mat-button (click)="reload()">Reload</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+}

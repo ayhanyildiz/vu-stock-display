@@ -1,0 +1,50 @@
+<header>
+  <mat-toolbar>
+    <h1>VU1 Stock Screens</h1>
+    <button mat-icon-button routerLink="/settings" aria-label="Settings">
+      <mat-icon>settings</mat-icon>
+    </button>
+  </mat-toolbar>
+</header>
+
+<main>
+  <form [formGroup]="form">
+    @for (item of items(); track item.uid) {
+      <mat-card appearance="raised">
+        <span class="dial-id-box">Dial ID: {{ item.uid }}</span>
+
+        <mat-card-content>
+          <app-vu1-display
+            [ticker]="item.ticker"
+            [timestamp]="timestamp()">
+          </app-vu1-display>
+
+          <div class="dial-controls">
+            <mat-form-field appearance="fill" subscriptSizing="dynamic">
+              <input
+                matInput
+                [formControlName]="item.uid"
+                (blur)="commitTicker(item.uid)"
+                (keyup.enter)="commitTicker(item.uid)"
+                placeholder="e.g. AAPL"
+              />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+
+        @if (item.invalid) {
+          <div class="error-box" animate.enter="entering" animate.leave="leaving">
+            Invalid stock ticker symbol
+          </div>
+        }
+      </mat-card>
+    }
+  </form>
+
+  @if (items().length === 0) {
+    <div class="no-data">
+      <p>No dials connected or no tickers configured.</p>
+      <button mat-raised-button routerLink="/settings" color="primary">Configure Now</button>
+    </div>
+  }
+</main>

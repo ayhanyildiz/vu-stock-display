@@ -1,0 +1,142 @@
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.form-field-density(-2);
+  display: block;
+  height: 100%;
+  background: linear-gradient(to right top, #6bc4d1, #65c0d8, #64bcdf, #69b7e4, #73b1e7, #70b6ed, #6dbaf2, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+  @include mat.toolbar-overrides((
+    container-background-color: linear-gradient(to right bottom, #ffffff, #fbfbfb, #f8f8f8, #f4f4f4, #f1f1f1, #ececec, #e6e6e6, #e1e1e1, #d9d9d9, #d1d1d1, #cacaca, #c2c2c2),
+    container-text-color: #2570ab,
+  ));
+
+  .mat-mdc-form-field-input-control {
+    text-align: center;
+  }
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-image: linear-gradient(to right bottom, #ffffff, #fbfbfb, #f8f8f8, #f4f4f4, #f1f1f1, #ececec, #e6e6e6, #e1e1e1, #d9d9d9, #d1d1d1, #cacaca, #c2c2c2);
+  box-shadow: 2px 1px 10px 0 rgba(0, 0, 0, 0.3);
+
+  mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+main {
+  display: flex;
+  gap: 40px;
+  padding: 40px 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  > form {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0;
+  }
+
+  mat-card {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #69B7E4FF;
+    transition: outline 0.3s ease-in-out;
+    transform-style: preserve-3d;
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-block: 25px 0;
+      gap: 10px;
+
+      mat-form-field {
+        width: 100px;
+      }
+    }
+  }
+
+  .no-data {
+    text-align: center;
+    margin-top: 3rem;
+    color: #666;
+  }
+}
+
+.error-box {
+  position: absolute;
+  bottom: -40px;
+  background: #fff2f4;
+  padding-inline: 8px;
+  border-radius: 0 0 14px 14px;
+  box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+  border: #ff96a9 3px solid;
+  border-top: none;
+  pointer-events: none;
+  color: var(--mat-sys-error, #f44336);
+  line-height: 36px;
+
+  &.entering {
+    animation: slide-in 0.4s ease-out forwards;
+  }
+
+  &.leaving {
+    animation: slide-out 0.3s ease-in forwards;
+  }
+}
+
+.dial-id-box {
+  transition: all 0.1s ease-in-out;
+  writing-mode: sideways-lr;
+  color: #767676;
+  line-height: 0.6rem;
+  padding: 8px 8px 5px 8px;
+  border-radius: 8px 0 0 8px;
+  position: absolute;
+  top: 11px;
+  left: -26px;
+  border: 1px dashed rgba(129, 129, 129, 0.4);
+  border-right: none;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  box-shadow: -3px 2px 4px 0px rgb(0 0 0 / 5%);
+
+  &:hover {
+    border-color: rgba(129, 129, 129, 0.8);
+    color: #404040;
+    background: rgba(129, 129, 129, 0.1);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-100%) translateZ(-1px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) translateZ(-1px);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateY(0) translateZ(-1px);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%) translateZ(-1px);
+    opacity: 0;
+  }
+}

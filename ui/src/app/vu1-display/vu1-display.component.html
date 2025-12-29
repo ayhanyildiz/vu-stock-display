@@ -1,0 +1,13 @@
+<div class="vu1-chassis">
+  <div class="vu1-bezel">
+    <div class="vu1-screen">
+      <div class="vu1-preview">
+        <img [src]="'/api/preview/' + ticker() + '?t=' + timestamp()"
+             [alt]="ticker() + ' dial face'"
+             [hidden]="failed()"
+             (load)="onLoad()"
+             (error)="onError()">
+      </div>
+    </div>
+  </div>
+</div>

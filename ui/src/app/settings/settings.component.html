@@ -1,0 +1,60 @@
+<mat-card appearance="outlined" class="settings-card">
+  <mat-card-header>
+    <mat-card-title>Configuration</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-tab-group animationDuration="0ms">
+        <mat-tab label="Server Settings">
+          <div class="tab-content">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>VU Server URL</mat-label>
+              <input matInput formControlName="serverUrl" placeholder="http://localhost:5340">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>API Key</mat-label>
+              <input matInput formControlName="apiKey" placeholder="Enter API Key">
+            </mat-form-field>
+
+            <mat-divider class="divider"></mat-divider>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Logo.dev Token</mat-label>
+              <input matInput formControlName="logoDevToken" placeholder="pk_...">
+              <mat-hint>
+                Need a token? <a href="https://www.logo.dev/dashboard/api-keys" target="_blank">Get one for free here</a>
+              </mat-hint>
+            </mat-form-field>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="App Settings">
+          <div class="tab-content">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Refresh Interval (Minutes)</mat-label>
+              <input matInput type="number" formControlName="intervalMinutes" min="1">
+              <mat-hint>How often to check stock prices</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Threshold Percent (%)</mat-label>
+              <input matInput type="number" formControlName="thresholdPercent" step="0.1">
+              <mat-hint>Minimum change required to update dial face</mat-hint>
+            </mat-form-field>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-button color="warn" (click)="onCancel()" [disabled]="!currentConfig?.vuServer?.apiKey">
+      Cancel
+    </button>
+    <button mat-flat-button color="primary" (click)="saveConfig()" [disabled]="form.invalid || loading()">
+      {{ loading() ? 'Saving...' : 'Save' }}
+    </button>
+  </mat-card-actions>
+</mat-card>

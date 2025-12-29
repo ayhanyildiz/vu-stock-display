@@ -1,0 +1,11 @@
+{
+  "vuServer": {
+    "url": "http://localhost:5340",
+    "apiKey": ""
+  },
+  "settings": {
+    "intervalMinutes": 1,
+    "thresholdPercent": 0.1
+  },
+  "logoDevToken": ""
+}
