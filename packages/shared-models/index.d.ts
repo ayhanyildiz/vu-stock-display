@@ -8,6 +8,7 @@ export interface AppConfig {
         thresholdPercent: number
     };
     logoDevToken: string;
+    finnhubToken?: string;
     dials?: Record<string, Dial>;
 }
 

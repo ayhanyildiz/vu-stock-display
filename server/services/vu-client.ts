@@ -22,7 +22,7 @@ export async function fetchActiveDials(config: AppConfig): Promise<string[]> {
 
         const json = await response.json();
         const data = json?.data;
-
+        console.log('dials', data)
         if (!Array.isArray(data)) return [];
 
         return data

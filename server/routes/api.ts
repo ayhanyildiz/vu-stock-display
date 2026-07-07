@@ -1,12 +1,13 @@
 import { Router } from 'express';
 
 import { syncState } from '../services/storage.ts';
-import { fetchStockQuote } from '../services/stock-quote.ts';
+
 import { generateDialImage } from '../services/image-service.ts';
 import { loadAppState } from '../services/state.ts';
 import { prepareForRunTime } from '../services/init-service.ts';
 import { updateDialHardware } from '../services/dial-service.ts';
 import type { AppConfig } from '@shared/models';
+import { fetchStockQuoteFinnhub } from '../services/stock-quote.finnhub.ts';
 
 const router = Router();
 
@@ -35,7 +36,7 @@ router.post('/config', async (req, res, next) => {
 router.get('/preview/:ticker', async (req, res) => {
     const config = await loadAppState();
 
-    const quote = await fetchStockQuote(req.params.ticker);
+    const quote = await fetchStockQuoteFinnhub(req.params.ticker, config);
     const imageBuffer = await generateDialImage(quote, config.logoDevToken);
 
     res.set('Content-Type', 'image/png').send(imageBuffer);

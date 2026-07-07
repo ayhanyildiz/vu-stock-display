@@ -29,6 +29,7 @@ export async function loadAppState(): Promise<AppConfig> {
         vuServer: { ...defaultVuServer, ...data.vuServer },
         settings: { ...defaultSettings, ...data.settings },
         logoDevToken: data.logoDevToken ?? '',
+        finnhubToken: data.finnhubToken ?? '',
         dials: data.dials ?? {},
     };
 }

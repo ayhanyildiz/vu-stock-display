@@ -48,6 +48,8 @@ async function runMonitorTick(activeDials: string[]): Promise<number> {
             } catch (err: any) {
                 console.error(`❌ ${ticker}:`, err?.message ?? err);
             }
+
+            await sleep(1000);
         }
     }
 

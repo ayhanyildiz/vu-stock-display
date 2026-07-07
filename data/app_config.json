@@ -1,11 +1,38 @@
 {
   "vuServer": {
     "url": "http://localhost:5340",
-    "apiKey": ""
+    "apiKey": "cTpAWYuRpA2zx75Yh961Cg"
   },
   "settings": {
-    "intervalMinutes": 1,
+    "intervalMinutes": 120,
     "thresholdPercent": 0.1
   },
-  "logoDevToken": ""
+  "logoDevToken": "pk_VAMSqh0oTDqhjpaJru0I3A",
+  "finnhubToken": "d5abr09r01qn2tat8bqgd5abr09r01qn2tat8br0",
+  "dials": {
+    "580033000650564139323920": {
+      "ticker": "APLD"
+    },
+    "300043000650564139323920": {
+      "ticker": "IONQ"
+    },
+    "22001E000650564139323920": {
+      "ticker": "RGTI"
+    },
+    "80003E000650564139323920": {
+      "ticker": "UI"
+    },
+    "2F006C000650564139323920": {
+      "ticker": "INTC"
+    },
+    "590041000650564139323920": {
+      "ticker": "RIVN"
+    },
+    "6C0029000650564139323920": {
+      "ticker": "LLY"
+    },
+    "770024000650564139323920": {
+      "ticker": "MSFT"
+    }
+  }
 }

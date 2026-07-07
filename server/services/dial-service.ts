@@ -2,10 +2,10 @@ import { setTimeout as sleep } from 'node:timers/promises';
 import CRC32 from 'crc-32';
 
 import type { AppConfig } from '@shared/models';
-import { fetchStockQuote } from './stock-quote.ts';
 import { generateDialImage } from './image-service.ts';
 import { updateDial } from './vu-client.ts';
 import { getDialRuntimeState, setDialRuntimeState } from './state.ts';
+import { fetchStockQuoteFinnhub } from './stock-quote.finnhub.ts';
 
 export async function updateDialHardware(
     state: AppConfig,
@@ -21,7 +21,7 @@ export async function updateDialHardware(
         return;
     }
 
-    const quote = await fetchStockQuote(ticker);
+    const quote = await fetchStockQuoteFinnhub(ticker, state);
 
     if (!force && dialRuntime.lastPrice !== 0) {
         const deltaPct =

@@ -55,6 +55,7 @@ export class SettingsComponent implements OnInit {
     serverUrl: ['', Validators.required],
     apiKey: ['', Validators.required],
     logoDevToken: ['', Validators.required],
+    finnhubToken: [''],
     intervalMinutes: [0, [Validators.required, Validators.min(1)]],
     thresholdPercent: [0, [Validators.required, Validators.min(0)]],
   });
@@ -92,6 +93,7 @@ export class SettingsComponent implements OnInit {
       serverUrl: this.currentConfig?.vuServer?.url,
       apiKey: this.currentConfig?.vuServer?.apiKey ?? '',
       logoDevToken: this.currentConfig?.logoDevToken ?? '',
+      finnhubToken: this.currentConfig?.finnhubToken ?? '',
       intervalMinutes: this.currentConfig?.settings?.intervalMinutes,
       thresholdPercent: this.currentConfig?.settings?.thresholdPercent,
     });
@@ -101,8 +103,8 @@ export class SettingsComponent implements OnInit {
     if (this.form.invalid) return;
     this.loading.set(true);
 
-    const { serverUrl, apiKey, logoDevToken, intervalMinutes, thresholdPercent } = this.form.getRawValue();
-
+    const { serverUrl, apiKey, logoDevToken, intervalMinutes, thresholdPercent, finnhubToken } = this.form.getRawValue();
+console.log(this.form.value);
     const newConfig: AppConfig = {
       ...this.currentConfig,
       vuServer: {
@@ -110,6 +112,7 @@ export class SettingsComponent implements OnInit {
         apiKey: apiKey!,
       },
       logoDevToken: logoDevToken ?? '',
+      finnhubToken: finnhubToken ?? '',
       settings: {
         intervalMinutes: intervalMinutes!,
         thresholdPercent: thresholdPercent!,
